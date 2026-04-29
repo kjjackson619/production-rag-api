@@ -17,7 +17,9 @@ def run_ingestion():
 
     vector_store.add(embeddings)
 
-    print(f"Ingested {len(all_chunks)} chunks.")
+    vector_store.save()
+
+    print(f"Ingested {len(all_chunks)} chunks and saved index.")
 
 if __name__ == "__main__":
     run_ingestion()

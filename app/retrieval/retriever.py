@@ -7,9 +7,8 @@ class Retriever:
 
     
     def retrieve(self, query_vector):
-        results = self.vector_store.search(
-            query_vector,
-            k=settings.TOP_K
-        )
+        results = self.vector_store.search(query_vector, k=10)
 
-        return results
+        filtered = [r for r in results if r["score"] < 1.2]
+
+        return filtered[:5]

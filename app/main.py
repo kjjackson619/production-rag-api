@@ -26,6 +26,13 @@ def ask(question: str):
     answer = generate_answer(context, question)
 
     return {
+        "question": question,
         "answer": answer,
-        "sources": [c["source"] for c in retrieved_chunks]
+        "sources": [
+            {
+                "source": c["source"],
+                "score": c["score"]
+            }
+            for c in retrieved_chunks
+        ]
     }
